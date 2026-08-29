@@ -1,4 +1,4 @@
-package com.example.triggerspot.ui
+package com.signics.triggerspot.ui
 
 import android.annotation.SuppressLint
 import android.app.Application
@@ -13,9 +13,9 @@ import android.view.accessibility.AccessibilityManager
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.triggerspot.data.DeviceDataStore
-import com.example.triggerspot.data.TriggerDevice
-import com.example.triggerspot.service.TriggerSpotService
+import com.signics.triggerspot.data.DeviceDataStore
+import com.signics.triggerspot.data.TriggerDevice
+import com.signics.triggerspot.service.TriggerSpotService
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
@@ -44,7 +44,7 @@ class TriggerSpotViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     fun checkAccessibilityPermission(): Boolean {
-        val expectedService = "${getApplication<Application>().packageName}/com.example.triggerspot.service.TriggerSpotAccessibilityService"
+        val expectedService = "${getApplication<Application>().packageName}/com.signics.triggerspot.service.TriggerSpotAccessibilityService"
         val enabledServices = Settings.Secure.getString(
             getApplication<Application>().contentResolver,
             Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES

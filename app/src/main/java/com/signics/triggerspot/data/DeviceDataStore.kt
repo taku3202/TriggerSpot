@@ -1,4 +1,4 @@
-package com.example.triggerspot.data
+package com.signics.triggerspot.data
 
 import android.content.Context
 import androidx.datastore.core.DataStore

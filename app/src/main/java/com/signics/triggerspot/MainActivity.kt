@@ -1,4 +1,4 @@
-package com.example.triggerspot
+package com.signics.triggerspot
 
 import android.Manifest
 import android.content.Intent
@@ -19,10 +19,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.triggerspot.ui.DashboardScreen
-import com.example.triggerspot.ui.TriggerSpotViewModel
-import com.example.triggerspot.ui.theme.TriggerSpotTheme
-import com.example.triggerspot.util.TetheringHelper
+import com.signics.triggerspot.ui.DashboardScreen
+import com.signics.triggerspot.ui.TriggerSpotViewModel
+import com.signics.triggerspot.ui.theme.TriggerSpotTheme
+import com.signics.triggerspot.util.TetheringHelper
 
 class MainActivity : ComponentActivity() {
 

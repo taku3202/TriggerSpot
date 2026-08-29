@@ -1,4 +1,4 @@
-package com.example.triggerspot.ui.theme
+package com.signics.triggerspot.ui.theme
 
 import android.app.Activity
 import android.os.Build
