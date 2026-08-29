@@ -1,53 +1,47 @@
 # TriggerSpot
 
-TriggerSpot is a utility Android application that automatically enables Wi-Fi tethering (hotspot) when specific Bluetooth devices (such as car systems or earphones) are connected. It is designed to work reliably on modern Android versions by leveraging Accessibility Services to interact with system settings.
+TriggerSpot は、特定の Bluetooth デバイス（車載システム、イヤホンなど）が接続された際に、Wi-Fi テザリング（ホットスポット）を自動的に有効化する Android アプリです。ユーザー補助サービスを活用することで、最新の Android バージョンでも安定した自動操作を実現しています。
 
-## Features
+## 主な機能
 
-- **Automated Hotspot Toggling**: Detects Bluetooth connection/disconnection and triggers hotspot state.
-- **Modern Android Support**: Uses a multi-layered approach to bypass API restrictions on Android 11+.
-- **Quick Settings Integration**: Employs Accessibility Services to automatically interact with the Quick Settings panel for a seamless experience.
-- **Accurate State Detection**: Scans network interfaces to reliably determine if the hotspot is active, even when standard APIs fail.
-- **Background Persistence**: Operates as a Foreground Service to ensure continuous monitoring even when the app is not in use.
-- **Material 3 UI**: Modern, intuitive interface built with Jetpack Compose.
+- **テザリングの自動 ON/OFF**: Bluetooth の接続・切断を検知してトリガーを実行。
+- **最新 Android 対応**: Android 11〜15 の制限を回避するマルチレイヤーアプローチ。
+- **クイック設定パネル連携**: ユーザー補助サービスにより、クイック設定パネルを自動操作して確実な有効化を実現。
+- **高精度な状態検知**: 物理ネットワークインターフェースをスキャンし、テザリングの稼働状態を正確に判定。
+- **バックグラウンド常駐**: フォアグラウンドサービスとして動作し、常に接続を監視。
 
-## How It Works
+## スクリーンショットと操作手順
 
-1.  **Bluetooth Monitoring**: The app listens for `ACTION_ACL_CONNECTED` broadcasts.
-2.  **Interface Scanning**: When a connection is detected, it checks the physical network interfaces (like `ap0`) to see if the hotspot is already ON.
-3.  **Automation Sequence**: If the hotspot is OFF, it uses the **Accessibility Service** to:
-    - Expand the Quick Settings panel.
-    - Locate the "Hotspot" or "Tethering" tile.
-    - Click it to enable.
-    - Close the panel and return to the previous screen.
+### 1. デバイスの登録
+アプリを起動し、右下の **「+」ボタン** をタップして、トリガーにしたい Bluetooth デバイスを選択します。ペアリング済みのデバイスがリストに表示されます。
 
-## Installation & Setup
+![Device Selection](screenshots/selection.png)
 
-1.  **Clone & Build**: Import the project into Android Studio and deploy to your device.
-2.  **Permissions**:
-    - Grant **Bluetooth** and **Notification** permissions when prompted.
-    - Enable **System Settings Writing** (`WRITE_SETTINGS`) via the in-app prompt.
-3.  **Accessibility Service**:
-    - Go to **Settings > Accessibility > TriggerSpot** and turn it **ON**. This is crucial for the automated UI operations.
-4.  **Quick Settings**:
-    - Ensure that the "Hotspot" or "Tethering" tile is visible in your Quick Settings panel (swipe down from the top). If not, add it via the "Edit" (pencil) icon.
+### 2. 権限の設定
+アプリが正しく動作するために、いくつかの権限が必要です。メイン画面に赤い警告カードが表示されている場合は、**「FIX」** をタップして設定を行ってください。
 
-## Usage
+- **ユーザー補助サービス (Accessibility Service)**: 自動でスイッチを操作するために必須です。「TriggerSpot」を探して ON にしてください。
+- **システム設定の書き込み**: システム内部の設定を変更するために必要です。
 
-1.  Open TriggerSpot.
-2.  Tap the **"+" button** to add a paired Bluetooth device as a trigger.
-3.  Toggle the **Monitoring Active** switch to start the background service.
-4.  Connect your Bluetooth device, and watch TriggerSpot do the rest!
+![Dashboard](screenshots/dashboard.png)
 
-## Technical Stack
+### 3. 監視の開始
+上部の **「Monitoring Active」** スイッチを ON にすると、バックグラウンドでの監視が始まります。この状態で登録したデバイスが接続されると、自動的にテザリングが有効になります。
+
+## 仕組み
+
+1.  **接続検知**: `ACTION_ACL_CONNECTED` ブロードキャストを受信。
+2.  **状態確認**: すでにテザリングが ON の場合は何もしません。
+3.  **自動実行**: テザリングが OFF の場合、通知パネルを自動展開し、タイルを検索してクリック。
+4.  **自動クローズ**: 有効化を確認後、パネルを閉じて元の画面に戻ります。
+
+## 技術スタック
 
 - **UI**: Jetpack Compose (Material 3)
-- **Architecture**: MVVM with StateFlow
-- **Data Persistence**: Jetpack Preferences DataStore
-- **Serialization**: Kotlinx Serialization (JSON)
-- **Background**: Android Foreground Service
-- **Automation**: AccessibilityService API
+- **アーキテクチャ**: MVVM + StateFlow
+- **データ保存**: Jetpack Preferences DataStore
+- **自動化**: AccessibilityService API
 
-## Disclaimer
+## 免責事項
 
-This app uses Accessibility Services to automate UI interactions. It only interacts with the Hotspot toggle in your Quick Settings panel. Use it responsibly and in accordance with your local network policy.
+本アプリはユーザー補助 API を利用して UI 操作を自動化します。操作対象はクイック設定パネル内のテザリングスイッチのみです。利用規約および各キャリアのネットワークポリシーに従ってご利用ください。
