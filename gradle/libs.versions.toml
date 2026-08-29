@@ -9,7 +9,7 @@ activityCompose = "1.9.1"
 kotlin = "2.0.0"
 composeBom = "2024.08.00"
 datastore = "1.1.1"
-serialization = "1.7.1"
+serialization = "1.11.0"
 kotlin-serialization = "2.0.0"
 
 [libraries]
