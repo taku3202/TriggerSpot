@@ -1,4 +1,4 @@
-package com.example.triggerspot
+package com.signics.triggerspot
 
 import org.junit.Test
 

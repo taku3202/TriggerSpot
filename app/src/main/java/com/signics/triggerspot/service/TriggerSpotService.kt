@@ -1,4 +1,4 @@
-package com.example.triggerspot.service
+package com.signics.triggerspot.service
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -13,11 +13,11 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.example.triggerspot.MainActivity
-import com.example.triggerspot.R
-import com.example.triggerspot.data.DeviceDataStore
-import com.example.triggerspot.data.TriggerDevice
-import com.example.triggerspot.util.TetheringHelper
+import com.signics.triggerspot.MainActivity
+import com.signics.triggerspot.R
+import com.signics.triggerspot.data.DeviceDataStore
+import com.signics.triggerspot.data.TriggerDevice
+import com.signics.triggerspot.util.TetheringHelper
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.first
 
@@ -119,7 +119,7 @@ class TriggerSpotService : Service() {
                     if (!success) {
                         Log.d(TAG, "Direct enable failed. Using Accessibility Service via Quick Settings.")
                         // Send broadcast to Accessibility Service
-                        val triggerIntent = Intent("com.example.triggerspot.ACTION_TRIGGER_HOTSPOT").apply {
+                        val triggerIntent = Intent("com.signics.triggerspot.ACTION_TRIGGER_HOTSPOT").apply {
                             setPackage(packageName)
                         }
                         sendBroadcast(triggerIntent)

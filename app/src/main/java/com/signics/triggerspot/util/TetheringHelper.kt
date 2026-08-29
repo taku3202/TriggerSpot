@@ -1,4 +1,4 @@
-package com.example.triggerspot.util
+package com.signics.triggerspot.util
 
 import android.content.ComponentName
 import android.content.Context

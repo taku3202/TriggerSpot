@@ -1,11 +1,11 @@
-package com.example.triggerspot.service
+package com.signics.triggerspot.service
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
-import com.example.triggerspot.data.DeviceDataStore
+import com.signics.triggerspot.data.DeviceDataStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
