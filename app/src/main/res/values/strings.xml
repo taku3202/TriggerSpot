@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TriggerSpot</string>
+    <string name="accessibility_description">TriggerSpot uses this service to automatically toggle the Wi-Fi hotspot switch when a trigger Bluetooth device is connected. It only interacts with the tethering settings screen.</string>
+</resources>
