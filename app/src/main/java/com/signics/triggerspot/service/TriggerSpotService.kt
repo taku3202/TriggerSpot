@@ -13,6 +13,7 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.signics.triggerspot.MainActivity
 import com.signics.triggerspot.R
 import com.signics.triggerspot.data.DeviceDataStore
@@ -76,7 +77,12 @@ class TriggerSpotService : Service() {
             addAction(BluetoothDevice.ACTION_ACL_CONNECTED)
             addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED)
         }
-        registerReceiver(bluetoothReceiver, filter)
+        ContextCompat.registerReceiver(
+            this,
+            bluetoothReceiver,
+            filter,
+            ContextCompat.RECEIVER_EXPORTED // System broadcasts need to be exported or unspecified, but let's follow recommendations
+        )
         
         serviceScope.launch {
             dataStore.setServiceRunning(true)
