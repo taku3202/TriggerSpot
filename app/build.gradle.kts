@@ -5,15 +5,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.triggerspot"
-    compileSdk {
-        version = release(37)
-    }
+    namespace = "com.signics.triggerspot"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.triggerspot"
-        minSdk = 24
-        targetSdk = 37
+        applicationId = "com.signics.triggerspot"
+        minSdk = 29
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

@@ -1,4 +1,4 @@
-package com.example.triggerspot.ui
+package com.signics.triggerspot.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -14,7 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.triggerspot.data.TriggerDevice
+import com.signics.triggerspot.data.TriggerDevice
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

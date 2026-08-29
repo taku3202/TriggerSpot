@@ -1,4 +1,4 @@
-package com.example.triggerspot.service
+package com.signics.triggerspot.service
 
 import android.accessibilityservice.AccessibilityService
 import android.content.BroadcastReceiver
@@ -20,7 +20,7 @@ class TriggerSpotAccessibilityService : AccessibilityService() {
 
     private val triggerReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            if (intent.action == "com.example.triggerspot.ACTION_TRIGGER_HOTSPOT") {
+            if (intent.action == "com.signics.triggerspot.ACTION_TRIGGER_HOTSPOT") {
                 Log.i("TriggerSpotAcc", "Trigger received. Starting automation sequence.")
                 runAutomationSequence()
             }
@@ -65,7 +65,7 @@ class TriggerSpotAccessibilityService : AccessibilityService() {
 
     override fun onCreate() {
         super.onCreate()
-        val filter = IntentFilter("com.example.triggerspot.ACTION_TRIGGER_HOTSPOT")
+        val filter = IntentFilter("com.signics.triggerspot.ACTION_TRIGGER_HOTSPOT")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(triggerReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
         } else {
