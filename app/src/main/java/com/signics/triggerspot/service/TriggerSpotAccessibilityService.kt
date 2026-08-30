@@ -5,10 +5,10 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.os.Build
 import android.util.Log
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.*
 
 class TriggerSpotAccessibilityService : AccessibilityService() {
@@ -66,11 +66,12 @@ class TriggerSpotAccessibilityService : AccessibilityService() {
     override fun onCreate() {
         super.onCreate()
         val filter = IntentFilter("com.signics.triggerspot.ACTION_TRIGGER_HOTSPOT")
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            registerReceiver(triggerReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
-        } else {
-            registerReceiver(triggerReceiver, filter)
-        }
+        ContextCompat.registerReceiver(
+            this,
+            triggerReceiver,
+            filter,
+            ContextCompat.RECEIVER_NOT_EXPORTED
+        )
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
